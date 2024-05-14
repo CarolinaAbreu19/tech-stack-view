@@ -1,0 +1,27 @@
+.navbar {
+    background-color: var(--gray-light);
+    color: var(--gray);
+    width: 13vw;
+    height: 100vh;
+    padding: 1rem;
+
+    .nav-button {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 3rem;
+
+        .seta {
+            font-size: 2rem;
+        }
+    }
+
+    .nav-option {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+
+        .icone {
+            margin-right: 0.5rem;
+        }
+    }
+}
