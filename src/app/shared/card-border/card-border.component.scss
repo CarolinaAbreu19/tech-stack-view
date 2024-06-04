@@ -1,0 +1,20 @@
+.card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px 0;
+    border-left: 3px solid var(--primary);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    width: 8rem;
+
+    .titulo-card, .valor-card {
+        font-weight: 600;
+        color: var(--gray);
+    }
+
+    .valor-card {
+        margin: 0;
+        font-size: 3rem;     
+    }
+}
