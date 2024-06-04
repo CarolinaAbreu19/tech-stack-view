@@ -1,8 +1,9 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { CardBorderComponent } from './card-border/card-border.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CardBorderComponent } from './components/card-border/card-border.component';
+import { CardStickerComponent } from './components/card-sticker/card-sticker.component';
 
 
 
@@ -11,6 +12,7 @@ import { CardBorderComponent } from './card-border/card-border.component';
     HeaderComponent,
     NavbarComponent,
     CardBorderComponent,
+    CardStickerComponent,
   ],
   imports: [
     CommonModule
@@ -19,6 +21,7 @@ import { CardBorderComponent } from './card-border/card-border.component';
     HeaderComponent,
     NavbarComponent,
     CardBorderComponent,
+    CardStickerComponent,
   ]
 })
 export class SharedModule { 
