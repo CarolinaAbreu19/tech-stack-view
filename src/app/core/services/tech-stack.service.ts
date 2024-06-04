@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 })
 export class TechStackService {
 
-    private apiUrl = 'http://localhost:5000/api/TechStack'; // URL do seu backend
+    private apiUrl = 'https://localhost:5001/api/TechStack'; // URL do seu backend
 
     constructor(
         private http: HttpClient
@@ -16,9 +16,4 @@ export class TechStackService {
     obterTechStacks() {
         return this.http.get(`${this.apiUrl}/ObterTechStacks`);
     }
-
-    // obterTechStacks() {
-    //     return this.apiService.get(`${this.controller}/ObterTechStacks`);
-    // }
-
 }

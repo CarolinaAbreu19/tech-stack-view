@@ -21,9 +21,8 @@ export class GestaoTechStacksComponent implements OnInit {
   }
 
   obterTechStacks() {
-    this.techStackFacade.obterTechStacks().subscribe(response => {
+    this.techStackFacade.obterTechStacks().subscribe((response: any) => {
       this.listaTechStacks = response;
-      console.log(this.listaTechStacks)
     });
   }
 
