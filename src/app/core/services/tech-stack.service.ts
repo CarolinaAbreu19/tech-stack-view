@@ -16,4 +16,7 @@ export class TechStackService {
     obterTechStacks() {
         return this.http.get(`${this.apiUrl}/ObterTechStacks`);
     }
+    obterDetalhesTechStack(idTechStack) {
+        return this.http.get(`${this.apiUrl}/ObterDetalhesTechStack/${idTechStack}`);
+    }
 }

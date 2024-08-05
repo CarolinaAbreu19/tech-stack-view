@@ -4,6 +4,6 @@
 <fieldset class="container-tech-stacks">
   <legend class="titulo-container">Tech Stacks</legend>
   <div class="container-card" *ngFor="let item of listaTechStacks">
-    <app-card-border [tituloCard]="item.nome" [valorCard]="item.quantidadeAssuntos"></app-card-border>
+    <app-card-border [id]="item.id" [tituloCard]="item.nome" [valorCard]="item.quantidadePreenchimentos"></app-card-border>
   </div>
 </fieldset>

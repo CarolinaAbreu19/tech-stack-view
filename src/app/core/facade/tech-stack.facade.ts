@@ -14,5 +14,9 @@ export class TechStackFacade {
     obterTechStacks(): any {
         return this.techStackService.obterTechStacks().pipe(map(response => response));
     }
+    
+    obterDetalhesTechStack(idTechStack) {
+        return this.techStackService.obterDetalhesTechStack(idTechStack).pipe(map(response => response));
+    }
 
 }

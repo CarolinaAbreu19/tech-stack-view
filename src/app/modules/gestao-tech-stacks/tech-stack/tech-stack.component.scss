@@ -1,0 +1,70 @@
+.row {
+    display: flex;
+}
+
+.justify-end {
+    justify-content: flex-end !important;
+}
+
+.container-border {
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    width: 40%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.dados-principais {
+    display: flex;
+    flex-direction: column;
+
+    .icone-editar {
+        color: var(--gray);
+        align-self: flex-end;
+        cursor: pointer;
+    }
+}
+
+.quantidade-respostas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+
+    .titulo-card, .valor-card {
+        font-weight: 600;
+    }
+
+    .valor-card {
+        color: var(--gray);
+        font-size: 3rem;
+        margin: 0.5rem;
+    }
+
+    .pipe-label {
+        align-items: center;
+        margin-bottom: 0;
+    }
+}
+
+.pipe-label {
+    display: flex;
+    margin-bottom: 1rem;
+    
+    .label {
+        margin-right: 0.5rem;
+        font-weight: 600;
+    }
+}
+
+.btn-preencher {
+    padding: 0.5rem 2rem;
+    margin-right: 3rem;
+    color: var(--white);
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+.btn-preencher:active {
+    opacity: 0.8;
+}

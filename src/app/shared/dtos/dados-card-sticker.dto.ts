@@ -1,8 +1,8 @@
 export class DadosCardStickerDTO {
 
-    titulo: string | undefined;
-    valor: number | undefined;
-    nivel: string | undefined;
+    titulo: string;
+    valor: number;
+    nivel: string;
 
     constructor(param?: any) {
         if (param) {
