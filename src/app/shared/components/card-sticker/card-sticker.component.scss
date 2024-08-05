@@ -1,0 +1,33 @@
+.card-container {
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--yellow);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    p {
+        margin: 0;
+    }
+
+    .card-titulo {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .card-titulo, .card-valor {
+        color: var(--gray);
+    }
+
+    .card-valor {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+
+}

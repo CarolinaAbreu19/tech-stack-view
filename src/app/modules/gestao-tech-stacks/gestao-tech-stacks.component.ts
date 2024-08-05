@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TechStackFacade } from 'src/app/core/facade/tech-stack.facade';
-import { CardTechStackDTO } from 'src/app/dtos/tech-stack/card-tech-stack.dto';
+import { GestaoTechStackDTO } from 'src/app/dtos/tech-stack/gestao-tech-stack.dto';
 
 @Component({
   selector: 'app-gestao-tech-stacks',
@@ -9,8 +9,7 @@ import { CardTechStackDTO } from 'src/app/dtos/tech-stack/card-tech-stack.dto';
 })
 export class GestaoTechStacksComponent implements OnInit {
 
-  // listaTechStacks: CardTechStackDTO[] = new Array<CardTechStackDTO>();
-  listaTechStacks: any;
+  listaTechStacks: GestaoTechStackDTO[];
 
   constructor(
     public readonly techStackFacade: TechStackFacade
@@ -21,9 +20,8 @@ export class GestaoTechStacksComponent implements OnInit {
   }
 
   obterTechStacks() {
-    this.techStackFacade.obterTechStacks().subscribe(response => {
+    this.techStackFacade.obterTechStacks().subscribe((response: any) => {
       this.listaTechStacks = response;
-      console.log(this.listaTechStacks)
     });
   }
 

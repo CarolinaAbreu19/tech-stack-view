@@ -1,0 +1,22 @@
+<p-tabView class="tab-default">
+  <p-tabPanel header="Conhecimentos Específicos" [cache]='false' [selected]="abaSelecionada === '1'">
+    <ng-template pTemplate="content">
+      <app-novo-conhecimento [tipoConhecimento]="tipoConhecimentoEnum.Especifico"></app-novo-conhecimento>
+    </ng-template>
+  </p-tabPanel>
+  <p-tabPanel header="Conhecimentos Comuns" [cache]='false' [selected]="abaSelecionada === '2'">
+    <ng-template pTemplate="content">
+      <app-novo-conhecimento [tipoConhecimento]="tipoConhecimentoEnum.Comum"></app-novo-conhecimento>
+    </ng-template>
+  </p-tabPanel>
+  <p-tabPanel header="Assuntos" [cache]='false' [selected]="abaSelecionada === '3'">
+    <ng-template pTemplate="content">
+      TESTE 3
+    </ng-template>
+  </p-tabPanel>
+  <p-tabPanel header="Respostas" [cache]='false' [selected]="abaSelecionada === '4'">
+    <ng-template pTemplate="content">
+      TESTE 4
+    </ng-template>
+  </p-tabPanel>
+</p-tabView>

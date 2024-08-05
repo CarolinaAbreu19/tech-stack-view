@@ -1,8 +1,10 @@
 .navbar {
     background-color: var(--gray-light);
     color: var(--gray);
-    width: 13vw;
-    height: 100vh;
+    position: fixed;
+    top: 3.5rem;
+    bottom: 0;
+    width: 10vw;
     padding: 1rem;
 
     .nav-button {
