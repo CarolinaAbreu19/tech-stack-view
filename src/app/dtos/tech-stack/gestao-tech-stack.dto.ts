@@ -1,4 +1,4 @@
-export class CardTechStackDTO {
+export class GestaoTechStackDTO {
     id: number | undefined;
     nome: string | undefined;
     quantidadeAssuntos: number | undefined;
