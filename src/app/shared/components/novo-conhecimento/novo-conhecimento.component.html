@@ -1,0 +1,25 @@
+<div class="novo-conhecimento form-group">
+  <label for="novo-conhecimento">Novo Conhecimento</label>
+  <div class="input" [formGroup]="formArea">
+    <input type="text" formControlName="areaConhecimento">
+    <button class="btn-primary icon" (click)="criarNovaAreaConhecimento()">+</button>
+  </div>
+</div>
+<div class="tabela-areas-conhecimento">
+  <table>
+    <thead>
+      <tr>
+        <th>Área de Conhecimento</th>
+        <th>Assuntos</th>
+        <th></th> <!-- Coluna para ícones -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let area in areasConhecimento">
+        <td>{{ area.nome }}</td>
+        <td>{{ area.quantidadeAssuntos }}</td>
+        <td class="icon-column">
+      </tr>
+    </tbody>
+  </table>
+</div>

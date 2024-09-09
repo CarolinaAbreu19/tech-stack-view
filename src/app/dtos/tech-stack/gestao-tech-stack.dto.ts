@@ -1,13 +1,13 @@
 export class GestaoTechStackDTO {
     id: number | undefined;
     nome: string | undefined;
-    quantidadeAssuntos: number | undefined;
+    quantidadePreenchimentos: number | undefined;
   
     constructor(params?: any) {
       if (params) {
-        this.id                 = params.id;
-        this.nome               = params.nome;
-        this.quantidadeAssuntos = params.quantidadeAssuntos;
+        this.id                       = params.id;
+        this.nome                     = params.nome;
+        this.quantidadePreenchimentos = params.quantidadePreenchimentos;
       }
     }
 }

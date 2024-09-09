@@ -1,0 +1,46 @@
+<h1>Tech Stack {{informacoesTechStack.nome}}</h1>
+
+<div class="row">
+  <div class="container-border dados-principais">
+    <div class="pipe-label">
+      <label class="label" for="area-tech-stack">Área: </label>
+      <span id="area-tech-stack">{{ informacoesTechStack.area ?? '-' }}</span>
+    </div>
+    <div class="pipe-label">
+      <label class="label" for="area-tech-stack">Detalhes: </label>
+      <span id="area-tech-stack">{{ informacoesTechStack.detalhes ?? '-' }}</span>
+    </div>
+    <div class="pipe-label">
+      <label class="label" for="area-tech-stack">Responsáveis: </label>
+      <span id="area-tech-stack">{{ informacoesTechStack.responsaveis ?? '-' }}</span>
+    </div>
+    <div class="pipe-label">
+      <label class="label" for="area-tech-stack">Criada em: </label>
+      <span id="area-tech-stack">{{ informacoesTechStack.dataCriacao ?? '-' }}</span>
+    </div>
+    <div class="icone-editar">
+      <span class="material-symbols-outlined">edit</span>
+    </div>
+  </div>
+
+  <div class="container-border quantidade-respostas">
+    <p class="titulo-card">Quantidade de Respostas</p>
+    <p class="valor-card">{{ informacoesTechStack.respostas.quantidade ?? '0' }}</p>
+    <div class="pipe-label">
+      <p class="label">Última resposta: </p>
+      <span>{{ informacoesTechStack.respostas.dataUltimaResposta ?? '-' }}</span>
+    </div>
+  </div>
+
+  <div class="container-border grafico">
+    
+  </div>
+</div>
+
+<div class="row justify-end mt-2">
+  <button class="btn-primary text">Preencher</button>
+</div>
+
+<div class="row mt-2">
+  <app-tabs></app-tabs>
+</div>

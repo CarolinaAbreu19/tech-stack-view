@@ -1,0 +1,29 @@
+.flex-right {
+    display: flex;
+    justify-content: end;
+
+    .botao-add {
+        all: unset;
+        background: var(--primary);
+        color: var(--white);
+        padding: 5px 20px;
+        font-size: 2rem;
+        border-radius: 3px;
+        box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+        cursor: pointer;
+    }
+}
+
+.container-tech-stacks {
+    display: flex;
+    border: 2px solid var(--gray-light);
+    border-radius: 10px;
+    margin-top: 1rem;
+
+    .titulo-container {
+        color: var(--primary);
+        padding: 0 3rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+}

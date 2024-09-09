@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+:root {
+    --primary: #333387;
+    --blue-dark: #4d85b7;
+    --blue-light: #cfe9ff;
+    --white: #ffffff;
+    --gray: #6e6e6e;
+    --gray-light: #eae8e8;
+    --yellow: #fae89e;
+
+    --font-header: "Lexend", sans-serif;
+    --font-body: "Roboto", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+button {
+    all: unset;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    cursor: pointer;
+
+    &.btn-primary {
+        color: var(--white);
+        background-color: var(--primary);
+        border-radius: 5px;
+
+        &.text {
+            padding: 0.5rem 2rem;
+            margin-right: 3rem;
+        }
+
+        &.icon {
+           padding: .5rem 1rem; 
+        }
+    }
+    
+    &.btn-primary:active {
+        opacity: 0.8;
+    }
+}
+
+input {
+    padding: 0.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        color: var(--gray);
+        font-weight: 100;
+        font-size: 0.8rem;
+    }
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
