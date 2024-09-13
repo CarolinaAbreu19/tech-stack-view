@@ -1,4 +1,3 @@
-import * as moment from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TechStackFacade } from 'src/app/core/facade/tech-stack.facade';

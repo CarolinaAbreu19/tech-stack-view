@@ -62,3 +62,14 @@ input {
 .mt-2 {
     margin-top: 2rem;
 }
+
+.icones-tabela {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+
+    .material-symbols-outlined {
+        cursor: pointer;
+    }
+}

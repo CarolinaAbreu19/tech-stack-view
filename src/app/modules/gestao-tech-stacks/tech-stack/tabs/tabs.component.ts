@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TipoConhecimentoEnum } from 'src/app/shared/enums/tipo-conhecimento.enum';
 
 @Component({
@@ -7,6 +7,7 @@ import { TipoConhecimentoEnum } from 'src/app/shared/enums/tipo-conhecimento.enu
   styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent implements OnInit {
+  @Input() areasConhecimento;
 
   abaSelecionada: string;
   tipoConhecimentoEnum = TipoConhecimentoEnum;

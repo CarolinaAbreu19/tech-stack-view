@@ -9,7 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class NovoConhecimentoComponent implements OnInit {
   @Input() tipoConhecimento: number;
-  @Input() areasConhecimento: AreaConhecimentoDTO;
+  @Input() areasConhecimento: AreaConhecimentoDTO[];
 
   formArea: FormGroup;
 
@@ -18,12 +18,18 @@ export class NovoConhecimentoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.createForm();
+    this.filtrarAreasConhecimento();
   }
 
   createForm() {
     this.formArea = this.formBuilder.group({
       areaConhecimento: new FormControl(null, Validators.required)
-    })
+    });
+  }
+
+  filtrarAreasConhecimento() {
+    this.areasConhecimento = this.areasConhecimento.filter(area => area.idTipoConhecimento === this.tipoConhecimento);
   }
 
   criarNovaAreaConhecimento() {
