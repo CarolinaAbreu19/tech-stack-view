@@ -1,12 +1,9 @@
 <div class="flex-right">
-  <button>+</button>
+  <button class="botao-add">+</button>
 </div>
 <fieldset class="container-tech-stacks">
-  <legend>Tech Stacks</legend>
+  <legend class="titulo-container">Tech Stacks</legend>
   <div class="container-card" *ngFor="let item of listaTechStacks">
-    <div class="card">
-      <p class="nome-tech-stack">{{ item.nome }}</p>
-      <p class="numero-assuntos">{{ item.quantidadeAssuntos }}</p>
-    </div>
+    <app-card-border [id]="item.id" [tituloCard]="item.nome" [valorCard]="item.quantidadePreenchimentos"></app-card-border>
   </div>
 </fieldset>
