@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TechStackFacade } from 'src/app/core/facade/tech-stack.facade';
-import { GestaoTechStackDTO } from 'src/app/dtos/tech-stack/gestao-tech-stack.dto';
+import { GestaoTechStackDTO } from 'src/app/shared/dtos/gestao-tech-stack.dto';
 
 @Component({
   selector: 'app-gestao-tech-stacks',

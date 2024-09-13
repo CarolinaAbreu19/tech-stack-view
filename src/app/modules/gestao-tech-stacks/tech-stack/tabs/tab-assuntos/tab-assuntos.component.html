@@ -1,0 +1,41 @@
+<div class="form-group area-conhecimento">
+  <label class="form-label">Área de conhecimento</label>
+  <app-dropdown [opcoes]="areasConhecimentoChaveDescricao" (opcaoSelecionadaEmit)="consultarAreaSelecionada($event)"></app-dropdown>
+</div>
+<div class="novo-assunto-container mt-2">
+  <div class="form-group novo-assunto">
+    <label class="form-label">Novo assunto</label>
+    <input type="text" class="novo-assunto-input">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Relevância</label>
+    <div class="relevancia-container">
+      <button type="button" [ngClass]="relevanciaSelecionada === relevanciaEnum.Baixa ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Baixa)">Baixa</button>
+      <button type="button" [ngClass]="relevanciaSelecionada === relevanciaEnum.Normal ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Normal)">Normal</button>
+      <button type="button" [ngClass]="relevanciaSelecionada === relevanciaEnum.Alta ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Alta)">Alta</button>
+    </div>
+  </div>
+  <div class="button-submit">
+    <button type="button">+</button>
+  </div>
+</div>
+<div class="tabela mt-2">
+  <table>
+    <tr>
+      <th>Assunto</th>
+      <th>Peso</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let assunto of listaAssunto">
+      <td>{{ assunto.nome }}</td>
+      <td>{{ assunto.relevancia }}</td>
+      <td class="icones-tabela">
+        <span class="material-symbols-outlined">edit</span>
+        <span class="material-symbols-outlined">delete</span>
+      </td>
+    </tr>
+    <tr *ngIf="!listaAssunto">
+      <td colspan="3">Nenhum registro encontrado</td>
+    </tr>
+  </table>
+</div>

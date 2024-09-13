@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ChaveDescricaoDTO } from '../../dtos/chave-descricao.dto';
 
 
@@ -8,9 +8,9 @@ import { ChaveDescricaoDTO } from '../../dtos/chave-descricao.dto';
   styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent implements OnInit {
+  @Input() opcoes: ChaveDescricaoDTO[];
   @Output() opcaoSelecionadaEmit = new EventEmitter();
 
-  opcoes: ChaveDescricaoDTO[];
   opcaoSelecionada = new ChaveDescricaoDTO();
   exibirMenu = false;
   listaVazia = false;

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ChaveDescricaoDTO } from 'src/app/shared/dtos/chave-descricao.dto';
+import { InformacoesTechStackDTO } from 'src/app/shared/dtos/informacoes-tech-stack.dto';
 import { TipoConhecimentoEnum } from 'src/app/shared/enums/tipo-conhecimento.enum';
 
 @Component({
@@ -7,14 +9,16 @@ import { TipoConhecimentoEnum } from 'src/app/shared/enums/tipo-conhecimento.enu
   styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent implements OnInit {
-  @Input() areasConhecimento;
+  @Input() informacoesTechStack: InformacoesTechStackDTO;
 
   abaSelecionada: string;
   tipoConhecimentoEnum = TipoConhecimentoEnum;
+  areasConhecimentoChaveDescricao = new Array<ChaveDescricaoDTO>();
 
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

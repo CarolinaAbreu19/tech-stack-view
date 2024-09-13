@@ -1,0 +1,12 @@
+.area-conhecimento, .novo-assunto {
+    width: 50%;
+}
+
+.novo-assunto-container {
+    display: flex;
+}
+
+.relevancia-selecionada {
+    background-color: var(--primary);
+    color: white;
+}

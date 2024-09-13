@@ -1,5 +1,5 @@
 <div class="dropdown">
-  <input type="text" [value]="opcaoSelecionada.descricao">
+  <input type="text" class="dropdown-input" [value]="opcaoSelecionada.descricao">
   <button type="button" class="dropdown-button"  (click)="showMenu()">
     <span class="material-symbols-outlined" [ngClass]="exibirMenu ? 'rotate' : ''">change_history</span>
   </button>
