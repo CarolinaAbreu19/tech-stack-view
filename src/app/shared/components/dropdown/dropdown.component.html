@@ -1,11 +1,11 @@
 <div class="dropdown">
-  <input type="text" [value]="opcaoSelecionada">
+  <input type="text" [value]="opcaoSelecionada.descricao">
   <button type="button" class="dropdown-button"  (click)="showMenu()">
     <span class="material-symbols-outlined" [ngClass]="exibirMenu ? 'rotate' : ''">change_history</span>
   </button>
   <div class="dropdown-content" [ngClass]="exibirMenu ? 'show-dropdown-content' : ''">
     <div *ngFor="let item of opcoes" class="dropdown-option" (click)="selecionarOpcao(item)">
-      <span>{{ item }}</span>
+      <span>{{ item.descricao }}</span>
     </div>
   </div>
   <div *ngIf="listaVazia" class="dropdown-content" [ngClass]="exibirMenu ? 'show-dropdown-content' : ''">

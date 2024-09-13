@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ChaveDescricaoDTO } from '../../dtos/chave-descricao.dto';
+
 
 @Component({
   selector: 'app-dropdown',
@@ -6,15 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent implements OnInit {
+  @Output() opcaoSelecionadaEmit = new EventEmitter();
 
-  opcoes: string[];
-  opcaoSelecionada = "-";
+  opcoes: ChaveDescricaoDTO[];
+  opcaoSelecionada = new ChaveDescricaoDTO();
   exibirMenu = false;
   listaVazia = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.opcaoSelecionada.descricao = "-";
     this.verificarExibicaoListaVazia();
   }
 
@@ -26,10 +30,12 @@ export class DropdownComponent implements OnInit {
     this.exibirMenu = !this.exibirMenu;
   }
 
-  selecionarOpcao(item: string) {
+  selecionarOpcao(item: ChaveDescricaoDTO) {
     if(!this.listaVazia) {
       this.opcaoSelecionada = item;
       this.exibirMenu = false;
+
+      this.opcaoSelecionadaEmit.emit(item);
     }
   }
 
