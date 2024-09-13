@@ -6,6 +6,7 @@ import { CardBorderComponent } from './components/card-border/card-border.compon
 import { CardStickerComponent } from './components/card-sticker/card-sticker.component';
 import { NovoConhecimentoComponent } from './components/novo-conhecimento/novo-conhecimento.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     CardBorderComponent,
     CardStickerComponent,
-    NovoConhecimentoComponent
+    NovoConhecimentoComponent,
+    DropdownComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardBorderComponent,
     CardStickerComponent,
     NovoConhecimentoComponent,
+    DropdownComponent,
   ]
 })
 export class SharedModule { 
