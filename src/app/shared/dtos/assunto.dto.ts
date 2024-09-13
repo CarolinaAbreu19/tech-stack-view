@@ -2,7 +2,7 @@ export class AssuntoDTO {
 
     id: number;
     nome: string;
-    relevancia: number;
+    relevancia: string;
 
     constructor(param?: any) {
         if (param) {

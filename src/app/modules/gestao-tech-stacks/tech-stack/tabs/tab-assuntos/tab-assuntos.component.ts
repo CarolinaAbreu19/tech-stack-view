@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AssuntoFacade } from 'src/app/core/facade/assunto.facade';
 import { AreaConhecimentoDTO } from 'src/app/shared/dtos/area-conhecimento.dto';
 import { AssuntoDTO } from 'src/app/shared/dtos/assunto.dto';
 import { ChaveDescricaoDTO } from 'src/app/shared/dtos/chave-descricao.dto';
@@ -16,9 +17,11 @@ export class TabAssuntosComponent implements OnInit {
    relevanciaEnum = RelevanciaEnum;
    relevanciaSelecionada: number;
 
-   listaAssunto: AssuntoDTO[];
+   listaAssuntos: AssuntoDTO[];
 
-  constructor() { }  
+  constructor(
+    private assuntoFacade: AssuntoFacade
+  ) { }  
 
   ngOnInit() {
     this.montarAreasConhecimentoChaveDescricao();
@@ -34,7 +37,11 @@ export class TabAssuntosComponent implements OnInit {
   }
 
   consultarAreaSelecionada(event) {
-    console.log(event);
+    const idAreaSelecionada = event.chave;
+
+    this.assuntoFacade.obterAssuntosPorAreaConhecimento(idAreaSelecionada).subscribe((response: any) => {
+      this.listaAssuntos = response;
+    });
   }
 
   botaoSelecionado(relevancia: number) {

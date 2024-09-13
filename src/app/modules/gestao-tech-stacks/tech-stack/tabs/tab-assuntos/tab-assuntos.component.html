@@ -26,7 +26,7 @@
       <th>Peso</th>
       <th></th>
     </tr>
-    <tr *ngFor="let assunto of listaAssunto">
+    <tr *ngFor="let assunto of listaAssuntos">
       <td>{{ assunto.nome }}</td>
       <td>{{ assunto.relevancia }}</td>
       <td class="icones-tabela">
@@ -34,7 +34,7 @@
         <span class="material-symbols-outlined">delete</span>
       </td>
     </tr>
-    <tr *ngIf="!listaAssunto">
+    <tr *ngIf="!listaAssuntos || listaAssuntos.length === 0">
       <td colspan="3">Nenhum registro encontrado</td>
     </tr>
   </table>
