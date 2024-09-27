@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AreaConhecimentoDTO } from '../../dtos/area-conhecimento.dto';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NovaAreaConhecimentoDTO } from '../../dtos/nova-area-conhecimento.dto';
 
 @Component({
   selector: 'app-novo-conhecimento',
@@ -9,6 +10,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class NovoConhecimentoComponent implements OnInit {
   @Input() tipoConhecimento: number;
+  @Input() idTechStack: number;
   @Input() areasConhecimento: AreaConhecimentoDTO[];
 
   formArea: FormGroup;
@@ -33,7 +35,12 @@ export class NovoConhecimentoComponent implements OnInit {
   }
 
   criarNovaAreaConhecimento() {
-    console.log(this.formArea.get('areaConhecimento').value)
+    const dto = new NovaAreaConhecimentoDTO();
+    dto.idTipoConhecimento = this.tipoConhecimento;
+    dto.idTechStack = this.idTechStack;
+    dto.areaConhecimento = this.formArea.get('areaConhecimento').value
+
+    console.log(dto);
   }
 
 }
