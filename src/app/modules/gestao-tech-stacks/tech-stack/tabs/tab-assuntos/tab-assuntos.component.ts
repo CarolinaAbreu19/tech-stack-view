@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AssuntoFacade } from 'src/app/core/facade/assunto.facade';
 import { AreaConhecimentoDTO } from 'src/app/shared/dtos/area-conhecimento.dto';
 import { AssuntoDTO } from 'src/app/shared/dtos/assunto.dto';
 import { ChaveDescricaoDTO } from 'src/app/shared/dtos/chave-descricao.dto';
 import { InformacoesTechStackDTO } from 'src/app/shared/dtos/informacoes-tech-stack.dto';
+import { NovoAssuntoDTO } from 'src/app/shared/dtos/novo-assunto.dto';
 import { RelevanciaEnum } from 'src/app/shared/enums/relevancia.enum';
 
 @Component({
@@ -16,15 +18,19 @@ export class TabAssuntosComponent implements OnInit {
    areasConhecimentoChaveDescricao = new Array<ChaveDescricaoDTO>();
    relevanciaEnum = RelevanciaEnum;
    relevanciaSelecionada: number;
-
+   idAreaSelecionada: number;
    listaAssuntos: AssuntoDTO[];
+   formAssunto: FormGroup;
 
   constructor(
-    private assuntoFacade: AssuntoFacade
+    private assuntoFacade: AssuntoFacade,
+    private formBuilder: FormBuilder,
   ) { }  
 
   ngOnInit() {
+    this.createForm();
     this.montarAreasConhecimentoChaveDescricao();
+
   }
 
   montarAreasConhecimentoChaveDescricao() {
@@ -37,15 +43,31 @@ export class TabAssuntosComponent implements OnInit {
   }
 
   consultarAreaSelecionada(event) {
-    const idAreaSelecionada = event.chave;
+    const idArea = event.chave;
+    this.idAreaSelecionada = idArea;
 
-    this.assuntoFacade.obterAssuntosPorAreaConhecimento(idAreaSelecionada).subscribe((response: any) => {
+    this.assuntoFacade.obterAssuntosPorAreaConhecimento(idArea).subscribe((response: any) => {
       this.listaAssuntos = response;
     });
   }
 
   botaoSelecionado(relevancia: number) {
     this.relevanciaSelecionada = relevancia;
+  }
+
+  novoAssunto() {
+    const dto = new NovoAssuntoDTO();
+    dto.idAreaConhecimento = this.idAreaSelecionada;
+    dto.assunto = this.formAssunto.get('assunto').value;
+    dto.relevancia = this.relevanciaSelecionada;
+
+    console.log(dto);
+  }
+
+  createForm() {
+    this.formAssunto = this.formBuilder.group({
+      assunto: new FormControl(null, Validators.required)
+    });
   }
 
 }

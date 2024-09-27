@@ -2,10 +2,10 @@
   <label class="form-label">Área de conhecimento</label>
   <app-dropdown [opcoes]="areasConhecimentoChaveDescricao" (opcaoSelecionadaEmit)="consultarAreaSelecionada($event)"></app-dropdown>
 </div>
-<div class="novo-assunto-container mt-2">
+<div class="novo-assunto-container mt-2" [formGroup]="formAssunto">
   <div class="form-group novo-assunto">
     <label class="form-label">Novo assunto</label>
-    <input type="text" class="novo-assunto-input">
+    <input type="text" class="novo-assunto-input" formControlName="assunto">
   </div>
   <div class="form-group">
     <label class="form-label">Relevância</label>
@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="button-submit">
-    <button type="button">+</button>
+    <button type="button" (click)="novoAssunto()">+</button>
   </div>
 </div>
 <div class="tabela mt-2">

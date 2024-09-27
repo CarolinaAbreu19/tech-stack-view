@@ -6,6 +6,7 @@ import { TechStackComponent } from './gestao-tech-stacks/tech-stack/tech-stack.c
 import { TabViewModule } from 'primeng/tabview';
 import { TabsComponent } from './gestao-tech-stacks/tech-stack/tabs/tabs.component';
 import { TabAssuntosComponent } from './gestao-tech-stacks/tech-stack/tabs/tab-assuntos/tab-assuntos.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -17,8 +18,10 @@ import { TabAssuntosComponent } from './gestao-tech-stacks/tech-stack/tabs/tab-a
     exports: [],
     imports: [
         CommonModule,
+        ReactiveFormsModule,
         SharedModule,
         TabViewModule,
+        
     ]
 })
 export class ModulesModule {
