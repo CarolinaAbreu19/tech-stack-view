@@ -6,14 +6,21 @@ import { TechStackComponent } from './gestao-tech-stacks/tech-stack/tech-stack.c
 import { TabViewModule } from 'primeng/tabview';
 import { TabsComponent } from './gestao-tech-stacks/tech-stack/tabs/tabs.component';
 import { TabAssuntosComponent } from './gestao-tech-stacks/tech-stack/tabs/tab-assuntos/tab-assuntos.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TabRespostasComponent } from './gestao-tech-stacks/tech-stack/tabs/tab-respostas/tab-respostas.component';
+import { CheckboxModule } from 'primeng-lts/checkbox';
+import { GestaoColaboradoresComponent } from './gestao-colaboradores/gestao-colaboradores.component';
+import { PreenchimentoTechStackComponent } from './gestao-tech-stacks/tech-stack/preenchimento-tech-stack/preenchimento-tech-stack.component';
 
 @NgModule({
     declarations: [
         GestaoTechStacksComponent,
         TechStackComponent,
         TabsComponent,
-        TabAssuntosComponent
+        TabAssuntosComponent,
+        TabRespostasComponent,
+        GestaoColaboradoresComponent,
+        PreenchimentoTechStackComponent
     ],
     exports: [],
     imports: [
@@ -21,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         ReactiveFormsModule,
         SharedModule,
         TabViewModule,
-        
+        FormsModule,
+        CheckboxModule
     ]
 })
 export class ModulesModule {

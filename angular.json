@@ -28,6 +28,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "src/assets/scss/colors.scss",
               "src/assets/scss/primeng/primeng-custom.scss"
             ],
             "scripts": []
@@ -96,6 +97,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/assets/scss/colors.scss",
               "src/assets/scss/primeng/primeng-custom.scss"
             ],
             "scripts": []

@@ -1,0 +1,55 @@
+.accordion {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 80vw;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .accordion-item {
+        border-bottom: 1px solid #ddd;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            background-color: #f7f7f7;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #e2e2e2;
+            }
+        }
+
+        .accordion-content {
+            height: 0;
+            overflow: hidden;
+            padding: 0 15px;
+            background-color: #fff;
+            transition: height 0.3s ease, padding 0.3s ease;
+
+            &.active {
+                height: auto;
+                padding: 15px;
+            }
+        }
+    }
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 80vw;
+
+    .progresso-preenchimento {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+    }
+}

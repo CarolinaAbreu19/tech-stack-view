@@ -22,7 +22,7 @@
   </p-tabPanel>
   <p-tabPanel header="Respostas" [cache]='false' [selected]="abaSelecionada === '4'">
     <ng-template pTemplate="content">
-      TESTE 4
+      <app-tab-respostas [idTechStack]="informacoesTechStack.id"></app-tab-respostas>
     </ng-template>
   </p-tabPanel>
 </p-tabView>

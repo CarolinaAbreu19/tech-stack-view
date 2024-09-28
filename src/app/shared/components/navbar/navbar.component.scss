@@ -4,8 +4,17 @@
     position: fixed;
     top: 3.5rem;
     bottom: 0;
-    width: 10vw;
     padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: 0.5s;
+
+    &.exibir {
+        width: 10vw;
+    }
+
+    &.minimizar {
+        width: 2vw;
+    }
 
     .nav-button {
         display: flex;
@@ -14,16 +23,28 @@
 
         .seta {
             font-size: 2rem;
+            cursor: pointer;
+            transition: 0.5s;
+
+            &.minimizar {
+                rotate: 180deg;
+            }
         }
     }
 
     .nav-option {
-        margin-bottom: 1rem;
+        margin-bottom: 3rem;
         display: flex;
         align-items: center;
-
+        cursor: pointer;
+        transition: 0.5s;
+        
         .icone {
             margin-right: 0.5rem;
+        }
+        
+        &.minimizar {
+            display: none;
         }
     }
 }

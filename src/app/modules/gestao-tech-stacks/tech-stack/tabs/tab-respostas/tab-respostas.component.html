@@ -1,0 +1,39 @@
+<div class="buscar-colaborador-container" [formGroup]="formColaborador">
+  <div class="form-group buscar-colaborador">
+    <label class="form-label">Colaborador</label>
+    <div class="input">
+      <input type="text" class="input-colaborador" formControlName="colaborador">
+    </div>
+  </div>
+  <div class="form-group">
+    <p-checkbox [value]="true" formControlName="semPreenchimentoUltimos12Meses" label="Sem preenchimento nos últimos 12 meses​"></p-checkbox>
+  </div>
+  <button type="button" class="btn-primary icon" (click)="buscarColaborador()">
+    <span class="material-symbols-outlined">
+      search
+    </span>
+  </button>
+</div>
+<div class="tabela mt-2">
+  <table>
+    <tr>
+      <th>Colaborador</th>
+      <th>Perfil</th>
+      <th>Preenchimento</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let resposta of listaRespostas">
+      <td>{{ resposta.colaborador }}</td>
+      <td>{{ resposta.perfilColaborador }}</td>
+      <td>{{ resposta.dataPreenchimento }}  <span class="material-symbols-outlined" *ngIf="resposta.semPreenchimentoUltimos12Meses">info</span></td>
+      <td class="icones-tabela">
+        <span class="material-symbols-outlined">
+          forward_to_inbox
+        </span>
+      </td>
+    </tr>
+    <tr *ngIf="!listaRespostas || listaRespostas.length === 0">
+      <td colspan="4">Nenhum registro encontrado</td>
+    </tr>
+  </table>
+</div>

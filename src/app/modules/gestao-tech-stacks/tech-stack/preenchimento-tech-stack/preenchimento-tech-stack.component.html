@@ -1,0 +1,31 @@
+<div class="cabecalho">
+  <div class="dados-tech-stack">
+    <h2 class="titulo">Tech Stack {{ nomeTechStack }} - Preenchimento</h2>
+    <div class="progresso-preenchimento">
+      <h3 class="progresso">0% (0 / 90)</h3>
+      <button type="button">Finalizar</button>
+    </div>
+  </div>
+  <div class="legenda-nivel-conhecimento">
+    <app-legenda-nivel-conhecimento></app-legenda-nivel-conhecimento>
+  </div>
+</div>
+<div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-header" (click)="toggleAccordion(0)">
+      <h3>Conhecimentos Específicos</h3>
+    </div>
+    <div class="accordion-content" [ngClass]="{'active': activeIndex === 0}">
+      <p>Conteúdo do Accordion 1.</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" (click)="toggleAccordion(1)">
+      <h3>Conhecimentos Comuns</h3>
+    </div>
+    <div class="accordion-content" [ngClass]="{'active': activeIndex === 1}">
+      <p>Conteúdo do Accordion 2.</p>
+    </div>
+  </div>
+</div>

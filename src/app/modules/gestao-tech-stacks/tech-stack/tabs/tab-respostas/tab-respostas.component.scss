@@ -1,0 +1,14 @@
+.buscar-colaborador-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    
+    .buscar-colaborador {
+        width: 50%;
+
+        .input-colaborador {
+            width: 90%;
+        }
+    }
+}

@@ -1,19 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
-:root {
-    --primary: #333387;
-    --blue-dark: #4d85b7;
-    --blue-light: #cfe9ff;
-    --white: #ffffff;
-    --gray: #6e6e6e;
-    --gray-light: #eae8e8;
-    --yellow: #fae89e;
-    --dropdown-background: #f9f9f9;
-
-    --font-header: "Lexend", sans-serif;
-    --font-body: "Roboto", sans-serif;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -58,6 +44,10 @@ input {
         font-weight: 100;
         font-size: 0.8rem;
     }
+}
+
+.mt-1 {
+    margin-top: 1rem;
 }
 
 .mt-2 {

@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { GestaoTechStacksComponent } from './modules/gestao-tech-stacks/gestao-tech-stacks.component';
 import { ControlAccessGuard } from 'src/app/core/guards/control-access.guard';
 import { TechStackComponent } from './modules/gestao-tech-stacks/tech-stack/tech-stack.component';
+import { GestaoColaboradoresComponent } from './modules/gestao-colaboradores/gestao-colaboradores.component';
+import { PreenchimentoTechStackComponent } from './modules/gestao-tech-stacks/tech-stack/preenchimento-tech-stack/preenchimento-tech-stack.component';
 
 const routes: Routes = [
   { 
@@ -11,9 +13,19 @@ const routes: Routes = [
     component: GestaoTechStacksComponent,
     canActivate: [ControlAccessGuard] 
   },
+  { 
+    path: 'time', 
+    component: GestaoColaboradoresComponent,
+    canActivate: [ControlAccessGuard] 
+  },
   {
     path: 'tech-stack/:idTechStack/:nomeTechStack',
     component: TechStackComponent,
+    canActivate: [ControlAccessGuard]
+  },
+  {
+    path: 'tech-stack/:idTechStack/:nomeTechStack/preenchimento',
+    component: PreenchimentoTechStackComponent,
     canActivate: [ControlAccessGuard]
   },
   { 

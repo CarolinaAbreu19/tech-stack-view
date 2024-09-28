@@ -5,8 +5,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CardBorderComponent } from './components/card-border/card-border.component';
 import { CardStickerComponent } from './components/card-sticker/card-sticker.component';
 import { NovoConhecimentoComponent } from './components/novo-conhecimento/novo-conhecimento.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { LegendaNivelConhecimentoComponent } from './components/legenda-nivel-conhecimento/legenda-nivel-conhecimento.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +17,14 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     CardBorderComponent,
     CardStickerComponent,
     NovoConhecimentoComponent,
-    DropdownComponent
+    DropdownComponent,
+    ModalComponent,
+    LegendaNivelConhecimentoComponent,
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     HeaderComponent,
@@ -28,6 +33,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     CardStickerComponent,
     NovoConhecimentoComponent,
     DropdownComponent,
+    ModalComponent,
+    LegendaNivelConhecimentoComponent,
   ]
 })
 export class SharedModule { 

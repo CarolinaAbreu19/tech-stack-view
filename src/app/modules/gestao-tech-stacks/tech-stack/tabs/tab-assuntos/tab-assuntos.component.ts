@@ -1,9 +1,11 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AssuntoFacade } from 'src/app/core/facade/assunto.facade';
 import { AreaConhecimentoDTO } from 'src/app/shared/dtos/area-conhecimento.dto';
 import { AssuntoDTO } from 'src/app/shared/dtos/assunto.dto';
 import { ChaveDescricaoDTO } from 'src/app/shared/dtos/chave-descricao.dto';
+import { DadosModalDTO } from 'src/app/shared/dtos/dados-modal.dto';
 import { InformacoesTechStackDTO } from 'src/app/shared/dtos/informacoes-tech-stack.dto';
 import { NovoAssuntoDTO } from 'src/app/shared/dtos/novo-assunto.dto';
 import { RelevanciaEnum } from 'src/app/shared/enums/relevancia.enum';
@@ -11,21 +13,24 @@ import { RelevanciaEnum } from 'src/app/shared/enums/relevancia.enum';
 @Component({
   selector: 'app-tab-assuntos',
   templateUrl: './tab-assuntos.component.html',
-  styleUrls: ['./tab-assuntos.component.scss']
+  styleUrls: ['./tab-assuntos.component.scss'],
 })
 export class TabAssuntosComponent implements OnInit {
-   @Input() areasConhecimento : AreaConhecimentoDTO[];
-   areasConhecimentoChaveDescricao = new Array<ChaveDescricaoDTO>();
-   relevanciaEnum = RelevanciaEnum;
-   relevanciaSelecionada: number;
-   idAreaSelecionada: number;
-   listaAssuntos: AssuntoDTO[];
-   formAssunto: FormGroup;
+  @Input() areasConhecimento: AreaConhecimentoDTO[];
+  areasConhecimentoChaveDescricao = new Array<ChaveDescricaoDTO>();
+  relevanciaEnum = RelevanciaEnum;
+  relevanciaSelecionada: number;
+  idAreaSelecionada: number;
+  listaAssuntos: AssuntoDTO[];
+  formAssunto: FormGroup;
+
+  exibirModalEditar = false;
+  dadosModal = new DadosModalDTO();
 
   constructor(
     private assuntoFacade: AssuntoFacade,
     private formBuilder: FormBuilder,
-  ) { }  
+  ) { }
 
   ngOnInit() {
     this.createForm();
@@ -68,6 +73,18 @@ export class TabAssuntosComponent implements OnInit {
     this.formAssunto = this.formBuilder.group({
       assunto: new FormControl(null, Validators.required)
     });
+  }
+
+  abrirModalEditar() {
+    this.exibirModalEditar = true;
+    this.dadosModal.titulo = "Editar Assunto";
+    this.dadosModal.subtitulo = "Preencha o campo abaixo para editar o assunto selecionado."
+    this.dadosModal.tamanhoModal = "pequeno";
+  }
+
+  ocultarModal(event) {
+    if(event) 
+      this.exibirModalEditar = !this.exibirModalEditar;
   }
 
 }
