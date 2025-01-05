@@ -6,25 +6,26 @@
   </div>
 </form>
 
-<div class="tabela-areas-conhecimento">
+<div class="tabela tabela-areas-conhecimento">
   <table>
     <thead>
-      <tr>
-        <th>Área de Conhecimento</th>
-        <th>Assuntos</th>
-        <th class="icones-tabela">
-          
-        </th> <!-- Coluna para ícones -->
+      <tr class="titulos-colunas">
+        <th style="min-width: 40rem;">Área de Conhecimento</th>
+        <th style="min-width: 15rem;">Assuntos</th>
+        <th class="icones-tabela"></th> <!-- Coluna para ícones -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let area of areasConhecimento">
-        <td>{{ area.nome }}</td>
-        <td>{{ area.quantidadeAssuntos }}</td>
+        <td style="min-width: 40rem;">{{ area.nome }}</td>
+        <td style="min-width: 15rem; text-align: center;">{{ area.quantidadeAssuntos }}</td>
         <td class="icones-tabela">
           <span class="material-symbols-outlined">edit</span>
           <span class="material-symbols-outlined">delete</span>
         </td>
+      </tr>
+      <tr *ngIf="!areasConhecimento || areasConhecimento.length === 0">
+        <td colspan="3" style="text-align: center">Nenhum registro encontrado</td>
       </tr>
     </tbody>
   </table>

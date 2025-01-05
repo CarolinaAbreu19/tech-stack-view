@@ -2,13 +2,13 @@ export class NovaAreaConhecimentoDTO {
 
     idTipoConhecimento: number;
     idTechStack: number;
-    areaConhecimento: string;
+    descricao: string;
 
     constructor(param?: any) {
         if (param) {
             this.idTipoConhecimento = param.idTipoConhecimento;
             this.idTechStack = param.idTechStack;
-            this.areaConhecimento = param.areaConhecimento;
+            this.descricao = param.descricao;
         }
     }
 }

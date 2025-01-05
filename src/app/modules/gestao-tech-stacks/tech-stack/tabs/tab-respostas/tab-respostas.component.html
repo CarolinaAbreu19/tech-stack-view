@@ -5,8 +5,8 @@
       <input type="text" class="input-colaborador" formControlName="colaborador">
     </div>
   </div>
-  <div class="form-group">
-    <p-checkbox [value]="true" formControlName="semPreenchimentoUltimos12Meses" label="Sem preenchimento nos últimos 12 meses​"></p-checkbox>
+  <div class="form-group checkbox">
+    <p-checkbox formControlName="semPreenchimentoUltimos12Meses" label="Sem preenchimento nos últimos 12 meses​"></p-checkbox>
   </div>
   <button type="button" class="btn-primary icon" (click)="buscarColaborador()">
     <span class="material-symbols-outlined">
@@ -16,24 +16,28 @@
 </div>
 <div class="tabela mt-2">
   <table>
-    <tr>
-      <th>Colaborador</th>
-      <th>Perfil</th>
-      <th>Preenchimento</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let resposta of listaRespostas">
-      <td>{{ resposta.colaborador }}</td>
-      <td>{{ resposta.perfilColaborador }}</td>
-      <td>{{ resposta.dataPreenchimento }}  <span class="material-symbols-outlined" *ngIf="resposta.semPreenchimentoUltimos12Meses">info</span></td>
-      <td class="icones-tabela">
-        <span class="material-symbols-outlined">
-          forward_to_inbox
-        </span>
-      </td>
-    </tr>
-    <tr *ngIf="!listaRespostas || listaRespostas.length === 0">
-      <td colspan="4">Nenhum registro encontrado</td>
-    </tr>
+    <thead>
+      <tr>
+        <th style="min-width: 35rem;">Colaborador</th>
+        <th style="min-width: 10rem;">Perfil</th>
+        <th style="min-width: 10rem;">Preenchimento</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resposta of listaRespostas">
+        <td>{{ resposta.colaborador }}</td>
+        <td>{{ resposta.perfilColaborador }}</td>
+        <td>{{ resposta.dataPreenchimento }}  <span class="material-symbols-outlined" *ngIf="resposta.semPreenchimentoUltimos12Meses">info</span></td>
+        <td class="icones-tabela">
+          <span class="material-symbols-outlined">
+            forward_to_inbox
+          </span>
+        </td>
+      </tr>
+      <tr *ngIf="!listaRespostas || listaRespostas.length === 0">
+        <td colspan="4" style="text-align: center">Nenhum registro encontrado</td>
+      </tr>
+    </tbody>
   </table>
 </div>

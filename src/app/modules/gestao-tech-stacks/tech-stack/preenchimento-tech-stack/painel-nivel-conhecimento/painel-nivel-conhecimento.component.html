@@ -1,0 +1,13 @@
+<div class="niveis-container">
+  <button 
+    type="button"
+    class="btn-nivel-conhecimento"
+    *ngFor="let nivel of nivelConhecimentoEnumList, let i = index"
+    [ngClass]="{'active': opcaoSelecionada === nivel.id}"
+    [ngStyle]="{'background-color': nivelConhecimentoCores[i]}" 
+    (click)="selecionarNivelConhecimento(nivel.id)">{{ nivel.descricao }}
+  </button>
+  <div class="icone-container">
+    <span class="material-symbols-outlined concluido" *ngIf="assuntoPreenchido">done_all</span>
+  </div>
+</div>

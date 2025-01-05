@@ -20,23 +20,27 @@
 </div>
 <div class="tabela mt-2">
   <table>
-    <tr>
-      <th>Nome do colaborador</th>
-      <th>E-mail</th>
-      <th>Perfil</th>
-      <th></th>
-    </tr>
-    <tr *ngFor="let colaborador of listaColaboradores">
-      <td>{{ colaborador.nome }}</td>
-      <td>{{ colaborador.email }}</td>
-      <td>{{ colaborador.perfil }}</td>
-      <td class="icones-tabela">
-        <span class="material-symbols-outlined">edit</span>
-        <span class="material-symbols-outlined">delete</span>
-      </td>
-    </tr>
-    <tr *ngIf="!listaColaboradores || listaColaboradores.length === 0">
-      <td colspan="4">Nenhum registro encontrado</td>
-    </tr>
+    <thead>
+      <tr>
+        <th style="min-width: 33rem;">Nome do colaborador</th>
+        <th style="min-width: 20rem;">E-mail</th>
+        <th style="min-width: 20rem;">Perfil</th>
+        <th style="min-width: 2rem;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let colaborador of listaColaboradores">
+        <td style="min-width: 33rem;">{{ colaborador.nome }}</td>
+        <td style="min-width: 20rem; text-align: center">{{ colaborador.email }}</td>
+        <td style="min-width: 20rem; text-align: center">{{ colaborador.perfil }}</td>
+        <td class="icones-tabela" style="min-width: 2rem;">
+          <span class="material-symbols-outlined">edit</span>
+          <span class="material-symbols-outlined">delete</span>
+        </td>
+      </tr>
+      <tr *ngIf="!listaColaboradores || listaColaboradores.length === 0">
+        <td colspan="4" style="text-align: center">Nenhum registro encontrado</td>
+      </tr>
+    </tbody>
   </table>
 </div>

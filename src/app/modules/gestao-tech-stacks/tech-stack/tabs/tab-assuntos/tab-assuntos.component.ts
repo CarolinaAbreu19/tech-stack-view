@@ -22,14 +22,16 @@ export class TabAssuntosComponent implements OnInit {
   relevanciaSelecionada: number;
   idAreaSelecionada: number;
   listaAssuntos: AssuntoDTO[];
+  
   formAssunto: FormGroup;
-
-  exibirModalEditar = false;
+  formEditarAssunto: FormGroup;
+  
+  exibirModalSucesso = false;
   dadosModal = new DadosModalDTO();
 
   constructor(
     private assuntoFacade: AssuntoFacade,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -63,28 +65,32 @@ export class TabAssuntosComponent implements OnInit {
   novoAssunto() {
     const dto = new NovoAssuntoDTO();
     dto.idAreaConhecimento = this.idAreaSelecionada;
-    dto.assunto = this.formAssunto.get('assunto').value;
+    dto.assunto = this.formAssunto.get('assunto').value.trim();
     dto.relevancia = this.relevanciaSelecionada;
 
-    console.log(dto);
+    this.assuntoFacade.criarNovoAssunto(dto).subscribe((response: any) => {
+      if(response) {
+        this.formAssunto.get('assunto').setValue(null);
+        this.abrirModalSucesso();
+      }
+    });
   }
 
   createForm() {
     this.formAssunto = this.formBuilder.group({
       assunto: new FormControl(null, Validators.required)
-    });
+    });   
   }
 
-  abrirModalEditar() {
-    this.exibirModalEditar = true;
-    this.dadosModal.titulo = "Editar Assunto";
-    this.dadosModal.subtitulo = "Preencha o campo abaixo para editar o assunto selecionado."
+  abrirModalSucesso() {
+    this.exibirModalSucesso = true;
+    this.dadosModal.titulo = "Assunto criado com sucesso!";
     this.dadosModal.tamanhoModal = "pequeno";
   }
 
-  ocultarModal(event) {
+  toggleModal(event) {
     if(event) 
-      this.exibirModalEditar = !this.exibirModalEditar;
+      this.exibirModalSucesso = !this.exibirModalSucesso;
   }
 
 }

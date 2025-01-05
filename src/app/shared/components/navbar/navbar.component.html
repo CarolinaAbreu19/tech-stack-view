@@ -2,11 +2,11 @@
     <div class="nav-button">
         <span class="material-symbols-outlined seta" [ngClass]="exibirNavbar ? '' : 'minimizar'" (click)="minimizarNavbar()">navigate_before</span>
     </div>
-    <div class="nav-option" [ngClass]="aplicarEstilosOpcoesNavbar()" (click)="irParaTechStacks()">
+    <div class="nav-option" [ngClass]="aplicarEstilosOpcoesNavbar('techstack')" (click)="irParaTechStacks()">
         <span class="material-symbols-outlined icone">cycle</span>
         <a routerLink="/techStacks">Tech Stacks</a>
     </div>
-    <div class="nav-option" [ngClass]="aplicarEstilosOpcoesNavbar()" (click)="irParaTime()">
+    <div class="nav-option" [ngClass]="aplicarEstilosOpcoesNavbar('time')" (click)="irParaTime()">
         <span class="material-symbols-outlined icone">groups</span>
         <a routerLink="/time">Time</a>
     </div>

@@ -23,7 +23,9 @@ export class DropdownComponent implements OnInit {
   }
 
   verificarExibicaoListaVazia() {
-    if(!this.opcoes) this.listaVazia = true;
+    if(!this.opcoes || this.opcoes.length === 0) {
+      this.listaVazia = true;
+    }
   }
 
   showMenu() {

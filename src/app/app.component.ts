@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'techStackView';
+  navbarExibida = true;
+
+  ajusteExibicaoNavbar(event) {
+    this.navbarExibida = event;
+  }
 }

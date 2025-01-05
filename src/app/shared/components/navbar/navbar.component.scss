@@ -46,5 +46,9 @@
         &.minimizar {
             display: none;
         }
+
+        &.ativo {
+            color: var(--primary);
+        }
     }
 }

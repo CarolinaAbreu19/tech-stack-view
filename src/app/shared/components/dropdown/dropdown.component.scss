@@ -37,3 +37,10 @@
 .dropdown-input {
     width: 100%;
 }
+
+.dropdown-button {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 5.5px 5px;
+    border-radius: 0 4px 4px 0;
+}

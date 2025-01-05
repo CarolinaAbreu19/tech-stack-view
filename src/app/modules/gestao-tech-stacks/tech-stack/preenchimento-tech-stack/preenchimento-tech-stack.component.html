@@ -3,7 +3,7 @@
     <h2 class="titulo">Tech Stack {{ nomeTechStack }} - Preenchimento</h2>
     <div class="progresso-preenchimento">
       <h3 class="progresso">0% (0 / 90)</h3>
-      <button type="button">Finalizar</button>
+      <button type="button" class="btn-finalizar">Finalizar</button>
     </div>
   </div>
   <div class="legenda-nivel-conhecimento">
@@ -16,7 +16,16 @@
       <h3>Conhecimentos Específicos</h3>
     </div>
     <div class="accordion-content" [ngClass]="{'active': activeIndex === 0}">
-      <p>Conteúdo do Accordion 1.</p>
+      <div class="accordion" *ngFor="let item of informacoesTechStack.areasConhecimento">
+        <div class="accordion-header" *ngIf="item.idTipoConhecimento === tipoConhecimentoEnum.Especifico" (click)="obterAssuntos(item.id)">{{ item.nome }}</div>
+          <div class="accordion-subcontent" *ngFor="let assunto of listaAssuntos" [ngClass]="{'active': activeAssunto === item.id}">
+            <p>{{ assunto.nome }}</p>
+            <div class="btn-container"><app-painel-nivel-conhecimento 
+              (nivelSelecionadoEmitter)="salvarNivelSelecionado($event, assunto.id)"
+              ></app-painel-nivel-conhecimento></div>
+          </div>
+          <div class="accordion-empty" *ngIf="listaAssuntos.length === 0" [ngClass]="{'active': activeAssunto === item.id}">Nenhum registro encontrado</div>
+      </div>
     </div>
   </div>
 
@@ -25,7 +34,16 @@
       <h3>Conhecimentos Comuns</h3>
     </div>
     <div class="accordion-content" [ngClass]="{'active': activeIndex === 1}">
-      <p>Conteúdo do Accordion 2.</p>
+      <div class="accordion" *ngFor="let item of informacoesTechStack.areasConhecimento">
+        <div class="accordion-header" *ngIf="item.idTipoConhecimento === tipoConhecimentoEnum.Comum" (click)="obterAssuntos(item.id)">{{ item.nome }}</div>
+          <div class="accordion-subcontent" *ngFor="let assunto of listaAssuntos" [ngClass]="{'active': activeAssunto === item.id}">
+            <p>{{ assunto.nome }}</p>
+            <div class="btn-container"><app-painel-nivel-conhecimento 
+              (nivelSelecionadoEmitter)="salvarNivelSelecionado($event, assunto.id)"
+              ></app-painel-nivel-conhecimento></div>
+          </div>
+          <div class="accordion-empty" *ngIf="listaAssuntos.length === 0" [ngClass]="{'active': activeAssunto === item.id}">Nenhum registro encontrado</div>
+      </div>
     </div>
   </div>
 </div>

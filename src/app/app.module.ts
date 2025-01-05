@@ -17,7 +17,7 @@ import { CorsInterceptor } from './core/interceptors/cors.interceptor';
     ModulesModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule 
+    HttpClientModule,
   ],
   providers: [
     {

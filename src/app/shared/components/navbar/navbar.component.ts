@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Output() exibirNavbarEmit = new EventEmitter();
 
   exibirNavbar = true;
   techStackSelecionado = true;
@@ -21,6 +22,8 @@ export class NavbarComponent implements OnInit {
 
   minimizarNavbar() {
     this.exibirNavbar = !this.exibirNavbar;
+    const teste = this.exibirNavbar
+    this.exibirNavbarEmit.emit(teste);
   }
 
   irParaTechStacks() {
@@ -35,10 +38,22 @@ export class NavbarComponent implements OnInit {
     this.timeSelecionado = true;
   }
 
-  aplicarEstilosOpcoesNavbar() {
+  aplicarEstilosOpcoesNavbar(opcao: string) {
     const minimizar = this.exibirNavbar ? "" : "minimizar";
+    let ativo;
 
-    return minimizar;
+    switch (opcao) {
+      case 'techstack':
+        ativo = this.techStackSelecionado ? "ativo" : "";
+        break;
+      case 'time':
+        ativo = this.timeSelecionado ? "ativo" : "";
+        break;
+      default:
+        break;
+    }
+
+    return minimizar + " " + ativo;
   }
 
 }

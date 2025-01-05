@@ -1,0 +1,30 @@
+.niveis-container {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+    
+    .btn-nivel-conhecimento {
+        padding: 8px 12px;
+        border-radius: 5px;
+        width: 6rem;
+        text-align: center;
+        
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &.active {
+            border: 2px solid;
+        }
+    }
+
+    .icone-container {
+        min-width: 24px;
+
+        .concluido {
+            color: var(--green-done-icon);
+        }
+    }
+
+}

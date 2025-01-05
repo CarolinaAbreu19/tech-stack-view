@@ -4,9 +4,43 @@
 
 .novo-assunto-container {
     display: flex;
+    align-items: center;
 }
 
-.relevancia-selecionada {
-    background-color: var(--primary);
-    color: white;
+.relevancia-container{
+    margin-left: 1rem;
+}
+
+.button-submit {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    
+    button {
+        color: var(--white);
+        background-color: var(--primary);
+        padding: .5rem 1rem;
+        border-radius: 4px;
+    }
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    
+    .btn-relevancia {
+        border-radius: 4px;
+        background-color: var(--gray-light);
+        padding: 8px 13px;
+        transition: .5s;
+        
+        &:hover {
+            background-color: var(--gray-light-table);
+        }
+    }
+    
+    .relevancia-selecionada {
+        background-color: var(--primary);
+        color: white;
+    }
 }

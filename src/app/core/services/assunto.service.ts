@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { NovoAssuntoDTO } from "src/app/shared/dtos/novo-assunto.dto";
 
 @Injectable({
     providedIn: 'root'
@@ -15,5 +16,9 @@ export class AssuntoService {
 
     obterAssuntosPorAreaConhecimento(idAreaConhecimento: number) {
         return this.http.get(`${this.apiUrl}/ObterAssuntosPorAreaConhecimento/${idAreaConhecimento}`);
+    }
+    
+    criarNovoAssunto(dto: NovoAssuntoDTO) {
+        return this.http.post(`${this.apiUrl}/CriarNovoAssunto`, dto);
     }
 }

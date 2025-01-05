@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AreaConhecimentoDTO } from '../../dtos/area-conhecimento.dto';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NovaAreaConhecimentoDTO } from '../../dtos/nova-area-conhecimento.dto';
+import { DadosModalDTO } from '../../dtos/dados-modal.dto';
+import { AreaConhecimentoFacade } from 'src/app/core/facade/area-conhecimento.facade';
 
 @Component({
   selector: 'app-novo-conhecimento',
@@ -15,8 +17,12 @@ export class NovoConhecimentoComponent implements OnInit {
 
   formArea: FormGroup;
 
+  exibirModalEditar = false;
+  dadosModal = new DadosModalDTO();
+
   constructor(
     private formBuilder: FormBuilder,
+    private areaConhecimentoFacade: AreaConhecimentoFacade
   ) { }
 
   ngOnInit() {
@@ -38,9 +44,25 @@ export class NovoConhecimentoComponent implements OnInit {
     const dto = new NovaAreaConhecimentoDTO();
     dto.idTipoConhecimento = this.tipoConhecimento;
     dto.idTechStack = this.idTechStack;
-    dto.areaConhecimento = this.formArea.get('areaConhecimento').value
+    dto.descricao = this.formArea.get('areaConhecimento').value.trim();
 
-    console.log(dto);
+    this.areaConhecimentoFacade.criarNovaAreaConhecimento(dto).subscribe((response: any) => {
+      if(response) {
+        this.formArea.get('areaConhecimento').setValue(null);
+      }
+    });
+  }
+
+  abrirModalEditar(idArea) {
+    this.exibirModalEditar = true;
+    this.dadosModal.titulo = "Editar Área";
+    this.dadosModal.subtitulo = "Preencha os campos abaixo para editar a área selecionada."
+    this.dadosModal.tamanhoModal = "pequeno";
+  }
+
+  toggleModal(event) {
+    if(event) 
+      this.exibirModalEditar = !this.exibirModalEditar;
   }
 
 }

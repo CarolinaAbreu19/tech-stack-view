@@ -30,7 +30,7 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #eee;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -45,6 +45,17 @@
 
   &.pequeno {
     width: 30%;
+  }
+
+  .modal-titulo {
+    margin: 0;
+  }
+
+  .modal-subtitulo {
+    margin: 0;
+    color: var(--primary);
+    font-size: .9rem;
+    font-weight: 400;
   }
 }
 
@@ -61,6 +72,13 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modal-body {
+  padding: .5rem;
+  margin: 1rem 0;
+  background-color: var(--white);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .modal-footer {

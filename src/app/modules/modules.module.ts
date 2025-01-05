@@ -8,9 +8,9 @@ import { TabsComponent } from './gestao-tech-stacks/tech-stack/tabs/tabs.compone
 import { TabAssuntosComponent } from './gestao-tech-stacks/tech-stack/tabs/tab-assuntos/tab-assuntos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TabRespostasComponent } from './gestao-tech-stacks/tech-stack/tabs/tab-respostas/tab-respostas.component';
-import { CheckboxModule } from 'primeng-lts/checkbox';
 import { GestaoColaboradoresComponent } from './gestao-colaboradores/gestao-colaboradores.component';
 import { PreenchimentoTechStackComponent } from './gestao-tech-stacks/tech-stack/preenchimento-tech-stack/preenchimento-tech-stack.component';
+import { PainelNivelConhecimentoComponent } from './gestao-tech-stacks/tech-stack/preenchimento-tech-stack/painel-nivel-conhecimento/painel-nivel-conhecimento.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +20,8 @@ import { PreenchimentoTechStackComponent } from './gestao-tech-stacks/tech-stack
         TabAssuntosComponent,
         TabRespostasComponent,
         GestaoColaboradoresComponent,
-        PreenchimentoTechStackComponent
+        PreenchimentoTechStackComponent,
+        PainelNivelConhecimentoComponent
     ],
     exports: [],
     imports: [
@@ -29,7 +30,6 @@ import { PreenchimentoTechStackComponent } from './gestao-tech-stacks/tech-stack
         SharedModule,
         TabViewModule,
         FormsModule,
-        CheckboxModule
     ]
 })
 export class ModulesModule {

@@ -10,6 +10,11 @@
     right: 1rem;
     bottom: 1rem;
     padding: 1rem;
+    transition: 0.5s;
+
+    &.navbar-oculta {
+        left: 5vw;
+    }
 
     .router-outlet {
         width: calc(99vW - 13vw);

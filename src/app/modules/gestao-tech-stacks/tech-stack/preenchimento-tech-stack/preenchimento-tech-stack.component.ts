@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, ViewRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AssuntoFacade } from 'src/app/core/facade/assunto.facade';
 import { TechStackFacade } from 'src/app/core/facade/tech-stack.facade';
+import { AssuntoDTO } from 'src/app/shared/dtos/assunto.dto';
+import { InformacoesTechStackDTO } from 'src/app/shared/dtos/informacoes-tech-stack.dto';
+import { TipoConhecimentoEnum } from 'src/app/shared/enums/tipo-conhecimento.enum';
 
 @Component({
   selector: 'app-preenchimento-tech-stack',
@@ -9,12 +13,16 @@ import { TechStackFacade } from 'src/app/core/facade/tech-stack.facade';
 })
 export class PreenchimentoTechStackComponent implements OnInit {
 
-  informacoesTechStack;
+  informacoesTechStack: InformacoesTechStackDTO;
+  tipoConhecimentoEnum = TipoConhecimentoEnum;
   nomeTechStack: string;
   activeIndex: number | null = null;
+  activeAssunto: number | null = null;
+  listaAssuntos = new Array<AssuntoDTO>();
 
   constructor(
     public readonly techStackFacade: TechStackFacade,
+    private assuntoFacade: AssuntoFacade,
     public readonly route: ActivatedRoute
   ) { }
 
@@ -30,8 +38,24 @@ export class PreenchimentoTechStackComponent implements OnInit {
     });
   }
 
+  obterAssuntos(idArea: number) {
+    this.assuntoFacade.obterAssuntosPorAreaConhecimento(idArea).subscribe((response: any) => {
+      this.listaAssuntos = response;
+      this.toggleAssunto(idArea);
+    });
+  }
+
   toggleAccordion(index: number) {
     this.activeIndex = this.activeIndex === index ? null : index;
+    this.activeAssunto = null;
+  }
+
+  toggleAssunto(index: number) {
+    this.activeAssunto = this.activeAssunto === index ? null : index;
+  }
+
+  salvarNivelSelecionado(event: number, idAssunto: number) {
+    console.log(event, idAssunto)
   }
 
 }
