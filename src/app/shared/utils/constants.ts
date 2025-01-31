@@ -1,0 +1,1 @@
+export const MSG_SUCESSO = 'Operação realizada com sucesso';

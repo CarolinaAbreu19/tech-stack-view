@@ -3,7 +3,7 @@
     <h2 class="titulo">Tech Stack {{ nomeTechStack }} - Preenchimento</h2>
     <div class="progresso-preenchimento">
       <h3 class="progresso">0% (0 / 90)</h3>
-      <button type="button" class="btn-finalizar">Finalizar</button>
+      <button type="button" class="btn-finalizar" (click)="salvarPreenchimento()">Finalizar</button>
     </div>
   </div>
   <div class="legenda-nivel-conhecimento">
@@ -21,9 +21,9 @@
           <div class="accordion-subcontent" *ngFor="let assunto of listaAssuntos" [ngClass]="{'active': activeAssunto === item.id}">
             <p>{{ assunto.nome }}</p>
             <div class="btn-container"><app-painel-nivel-conhecimento 
-              (nivelSelecionadoEmitter)="salvarNivelSelecionado($event, assunto.id)"
+              (nivelSelecionadoEmitter)="salvarResposta($event, assunto.id)"
               ></app-painel-nivel-conhecimento></div>
-          </div>
+            </div>
           <div class="accordion-empty" *ngIf="listaAssuntos.length === 0" [ngClass]="{'active': activeAssunto === item.id}">Nenhum registro encontrado</div>
       </div>
     </div>
@@ -39,7 +39,7 @@
           <div class="accordion-subcontent" *ngFor="let assunto of listaAssuntos" [ngClass]="{'active': activeAssunto === item.id}">
             <p>{{ assunto.nome }}</p>
             <div class="btn-container"><app-painel-nivel-conhecimento 
-              (nivelSelecionadoEmitter)="salvarNivelSelecionado($event, assunto.id)"
+              (nivelSelecionadoEmitter)="salvarResposta($event, assunto.id)"
               ></app-painel-nivel-conhecimento></div>
           </div>
           <div class="accordion-empty" *ngIf="listaAssuntos.length === 0" [ngClass]="{'active': activeAssunto === item.id}">Nenhum registro encontrado</div>

@@ -17,5 +17,13 @@ export class AreaConhecimentoFacade {
     criarNovaAreaConhecimento(dto: NovaAreaConhecimentoDTO): any {
         return this.areaConhecimentoService.criarNovaAreaConhecimento(dto);
     }
+    
+    editarAreaConhecimento(dto: NovaAreaConhecimentoDTO): any {
+        return this.areaConhecimentoService.editarAreaConhecimento(dto);
+    }
+
+    excluirAreaConhecimento(idArea: number) {
+        return this.areaConhecimentoService.excluirAreaConhecimento(idArea);
+    }
 
 }

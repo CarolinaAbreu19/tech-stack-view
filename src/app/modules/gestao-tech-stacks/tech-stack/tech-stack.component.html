@@ -1,7 +1,7 @@
 <h1>Tech Stack {{ nomeTechStack }}</h1>
 
 <div class="row">
-  <div class="container-border dados-principais">
+  <div class="col-4 container-border dados-principais">
     <div class="pipe-label">
       <label class="label" for="area-tech-stack">Área: </label>
       <span id="area-tech-stack">{{ informacoesTechStack.area ?? '-' }}</span>
@@ -42,5 +42,5 @@
 </div>
 
 <div class="row mt-2">
-  <app-tabs [informacoesTechStack]="informacoesTechStack"></app-tabs>
+  <app-tabs [informacoesTechStack]="informacoesTechStack" (obterDetalhesTechStackEmitter)="obterDetalhesTechStack()"></app-tabs>
 </div>

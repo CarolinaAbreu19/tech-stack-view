@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ChaveDescricaoDTO } from 'src/app/shared/dtos/chave-descricao.dto';
 import { InformacoesTechStackDTO } from 'src/app/shared/dtos/informacoes-tech-stack.dto';
 import { TipoConhecimentoEnum } from 'src/app/shared/enums/tipo-conhecimento.enum';
@@ -10,6 +10,7 @@ import { TipoConhecimentoEnum } from 'src/app/shared/enums/tipo-conhecimento.enu
 })
 export class TabsComponent implements OnInit {
   @Input() informacoesTechStack: InformacoesTechStackDTO;
+  @Output() obterDetalhesTechStackEmitter = new EventEmitter();
 
   abaSelecionada: string;
   tipoConhecimentoEnum = TipoConhecimentoEnum;
@@ -19,6 +20,10 @@ export class TabsComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  obterDetalhesTechStack() {
+    this.obterDetalhesTechStackEmitter.emit();
   }
 
 }

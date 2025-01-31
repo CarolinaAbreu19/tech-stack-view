@@ -16,4 +16,12 @@ export class AreaConhecimentoService {
     criarNovaAreaConhecimento(dto: NovaAreaConhecimentoDTO) {
         return this.http.post(`${this.apiUrl}/CriarNovaAreaConhecimento`, dto);
     }
+
+    editarAreaConhecimento(dto: NovaAreaConhecimentoDTO) {
+        return this.http.post(`${this.apiUrl}/EditarAreaConhecimento`, dto);
+    }
+    
+    excluirAreaConhecimento(idArea: number) {
+        return this.http.delete(`${this.apiUrl}/ExcluirAreaConhecimento/${idArea}`);
+    }
 }

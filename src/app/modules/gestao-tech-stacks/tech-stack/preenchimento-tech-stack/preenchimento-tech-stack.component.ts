@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild, ViewRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AssuntoFacade } from 'src/app/core/facade/assunto.facade';
+import { RespostaFacade } from 'src/app/core/facade/resposta.facade';
 import { TechStackFacade } from 'src/app/core/facade/tech-stack.facade';
 import { AssuntoDTO } from 'src/app/shared/dtos/assunto.dto';
 import { InformacoesTechStackDTO } from 'src/app/shared/dtos/informacoes-tech-stack.dto';
+import { PreenchimentoTechStackDTO } from 'src/app/shared/dtos/preenchimento-tech-stack.dto';
+import { NovaRespostaDTO } from 'src/app/shared/dtos/resposta.dto';
 import { TipoConhecimentoEnum } from 'src/app/shared/enums/tipo-conhecimento.enum';
 
 @Component({
@@ -19,10 +22,12 @@ export class PreenchimentoTechStackComponent implements OnInit {
   activeIndex: number | null = null;
   activeAssunto: number | null = null;
   listaAssuntos = new Array<AssuntoDTO>();
+  respostas = new Array<NovaRespostaDTO>();
 
   constructor(
     public readonly techStackFacade: TechStackFacade,
-    private assuntoFacade: AssuntoFacade,
+    public readonly respostaFacade: RespostaFacade,
+    private readonly assuntoFacade: AssuntoFacade,
     public readonly route: ActivatedRoute
   ) { }
 
@@ -35,6 +40,7 @@ export class PreenchimentoTechStackComponent implements OnInit {
     this.nomeTechStack = this.route.snapshot.paramMap.get('nomeTechStack');
     this.techStackFacade.obterDetalhesTechStack(idTechStack).subscribe((response: any) => {
       this.informacoesTechStack = response;
+      this.buscarPreenchimentoUsuario();
     });
   }
 
@@ -54,8 +60,33 @@ export class PreenchimentoTechStackComponent implements OnInit {
     this.activeAssunto = this.activeAssunto === index ? null : index;
   }
 
-  salvarNivelSelecionado(event: number, idAssunto: number) {
-    console.log(event, idAssunto)
+  salvarResposta(event: number, idAssunto: number) {
+    const novaResposta = new NovaRespostaDTO();
+    novaResposta.idAssunto = idAssunto;
+    novaResposta.idNivelConhecimento = event;
+    this.respostas.push(novaResposta);
+    
+    this.respostaFacade.criarNovaResposta(novaResposta).subscribe((response: any) => {});
+  }
+
+  salvarPreenchimento() {
+    const preenchimento = new PreenchimentoTechStackDTO();
+    preenchimento.idTechStack = this.informacoesTechStack.id;
+    preenchimento.respostas = this.respostas;
+
+    this.techStackFacade.salvarPreenchimentoTechStack(preenchimento).subscribe((response: any) => {
+      if(response) {
+        
+      }
+    });
+  }
+
+  buscarPreenchimentoUsuario() {
+    this.techStackFacade.obterPreenchimentoTechStack(this.informacoesTechStack.id).subscribe((response: any) => {
+      if(response) {
+        
+      }
+    });
   }
 
 }

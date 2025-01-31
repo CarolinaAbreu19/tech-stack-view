@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ColaboradorFacade } from 'src/app/core/facade/colaborador.facade';
 import { FiltroColaboradorDTO } from 'src/app/shared/dtos/filtro-colaborador.dto';
 import { RespostasColaboradorDTO } from 'src/app/shared/dtos/respostas-colaborador.dto';
 
@@ -17,6 +18,7 @@ export class TabRespostasComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private readonly colaboradorFacade: ColaboradorFacade
   ) { }
 
   ngOnInit() {
@@ -29,7 +31,9 @@ export class TabRespostasComponent implements OnInit {
     dto.colaborador = this.formColaborador.get('colaborador').value;
     dto.semPreenchimentoUltimos12Meses = this.formColaborador.get('semPreenchimentoUltimos12Meses').value.length !== 0 ? true : false;
 
-    console.log(dto);
+    this.colaboradorFacade.obterColaboradores(dto).subscribe((response: any) => {
+      this.listaRespostas = response;
+    });
   }
 
   createForm() {

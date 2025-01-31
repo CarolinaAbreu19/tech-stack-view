@@ -1,9 +1,10 @@
 <form class="novo-conhecimento form-group">
   <label for="novo-conhecimento" class="form-label">Novo Conhecimento</label>
-  <div class="input" [formGroup]="formArea">
+  <div class="input mb-3" [formGroup]="formArea">
     <input type="text" formControlName="areaConhecimento">
-    <button type="button" class="btn-primary icon" (click)="criarNovaAreaConhecimento()">+</button>
+    <button type="button" class="btn-primary icon" (click)="criarNovaAreaConhecimento()" [disabled]="formArea.invalid">+</button>
   </div>
+  <small class="txt-red-dark" *ngIf="formArea.get('areaConhecimento').errors && formArea.get('areaConhecimento').touched">Campo obrigatório</small>
 </form>
 
 <div class="tabela tabela-areas-conhecimento">
@@ -12,7 +13,7 @@
       <tr class="titulos-colunas">
         <th style="min-width: 40rem;">Área de Conhecimento</th>
         <th style="min-width: 15rem;">Assuntos</th>
-        <th class="icones-tabela"></th> <!-- Coluna para ícones -->
+        <th style="min-height: 40.8px;" class="icones-tabela"></th> <!-- Coluna para ícones -->
       </tr>
     </thead>
     <tbody>
@@ -20,8 +21,8 @@
         <td style="min-width: 40rem;">{{ area.nome }}</td>
         <td style="min-width: 15rem; text-align: center;">{{ area.quantidadeAssuntos }}</td>
         <td class="icones-tabela">
-          <span class="material-symbols-outlined">edit</span>
-          <span class="material-symbols-outlined">delete</span>
+          <span class="material-symbols-outlined" (click)="showModalEditar(modalEditar, area.id)">edit</span>
+          <span class="material-symbols-outlined" (click)="showModalExcluir(modalExcluir, area)">delete</span>
         </td>
       </tr>
       <tr *ngIf="!areasConhecimento || areasConhecimento.length === 0">
@@ -30,3 +31,37 @@
     </tbody>
   </table>
 </div>
+
+<ng-template #modalEditar let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Área de Conhecimento</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="input mb-3" [formGroup]="formArea">
+          <input type="text" formControlName="areaConhecimento">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-confirmar" (click)="editarAreaConhecimento()">Confirmar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancelar</button>
+  </div>
+</ng-template>
+
+<ng-template #modalExcluir let-modal>
+  <div class="modal-header">
+    <h4 class="modal-titulo" id="modal-basic-title">Excluir Área de Conhecimento</h4>
+    <h6 class="modal-subtitulo">Tem certeza que deseja excluir esta área de conhecimento?</h6>
+  </div>
+  <div class="modal-body">
+    {{ descricaoArea }}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-confirmar" (click)="excluirAreaConhecimento()">Excluir</button>
+    <button type="button" class="btn btn-cancelar" (click)="modal.close()">Cancelar</button>
+  </div>
+</ng-template>
+

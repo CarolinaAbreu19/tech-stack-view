@@ -2,6 +2,7 @@
   <p-tabPanel header="Conhecimentos Específicos" [cache]='false' [selected]="abaSelecionada === '1'">
     <ng-template pTemplate="content">
       <app-novo-conhecimento 
+        (obterDetalhesTechStackEmitter)="obterDetalhesTechStack()"
         [idTechStack]="informacoesTechStack.id"
         [areasConhecimento]="informacoesTechStack.areasConhecimento" 
         [tipoConhecimento]="tipoConhecimentoEnum.Especifico"></app-novo-conhecimento>

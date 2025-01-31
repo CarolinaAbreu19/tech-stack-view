@@ -1,6 +1,7 @@
 .flex-right {
     display: flex;
     justify-content: end;
+    margin-right: 2rem;
 
     .botao-add {
         all: unset;
@@ -19,6 +20,7 @@
     border: 2px solid var(--gray-light);
     border-radius: 10px;
     margin-top: 1rem;
+    margin-right: 2rem;
 
     .titulo-container {
         color: var(--primary);

@@ -7,8 +7,8 @@ import { CardStickerComponent } from './components/card-sticker/card-sticker.com
 import { NovoConhecimentoComponent } from './components/novo-conhecimento/novo-conhecimento.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { LegendaNivelConhecimentoComponent } from './components/legenda-nivel-conhecimento/legenda-nivel-conhecimento.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,13 +18,13 @@ import { LegendaNivelConhecimentoComponent } from './components/legenda-nivel-co
     CardStickerComponent,
     NovoConhecimentoComponent,
     DropdownComponent,
-    ModalComponent,
     LegendaNivelConhecimentoComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
   ],
   exports: [
     HeaderComponent,
@@ -33,7 +33,6 @@ import { LegendaNivelConhecimentoComponent } from './components/legenda-nivel-co
     CardStickerComponent,
     NovoConhecimentoComponent,
     DropdownComponent,
-    ModalComponent,
     LegendaNivelConhecimentoComponent,
   ]
 })
