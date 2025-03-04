@@ -21,4 +21,12 @@ export class AssuntoService {
     criarNovoAssunto(dto: NovoAssuntoDTO) {
         return this.http.post(`${this.apiUrl}/CriarNovoAssunto`, dto);
     }
+
+    editarAssunto(dto: NovoAssuntoDTO) {
+        return this.http.post(`${this.apiUrl}/EditarAssunto`, dto);
+    }
+    
+    excluirAssunto(idAssunto: number) {
+        return this.http.delete(`${this.apiUrl}/ExcluirAssunto/${idAssunto}`);
+    }
 }

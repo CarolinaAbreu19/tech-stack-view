@@ -20,4 +20,12 @@ export class AssuntoFacade {
         return this.assuntoService.criarNovoAssunto(dto);
     }
 
+    editarAssunto(dto: NovoAssuntoDTO): any {
+        return this.assuntoService.editarAssunto(dto);
+    }
+
+    excluirAssunto(idAssunto: number) {
+        return this.assuntoService.excluirAssunto(idAssunto);
+    }
+
 }

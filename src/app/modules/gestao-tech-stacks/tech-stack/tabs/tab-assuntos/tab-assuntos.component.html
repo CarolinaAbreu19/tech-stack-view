@@ -1,24 +1,28 @@
-<div class="form-group area-conhecimento">
-  <label class="form-label">Área de conhecimento</label>
-  <app-dropdown [opcoes]="areasConhecimentoChaveDescricao" (opcaoSelecionadaEmit)="consultarAreaSelecionada($event)"></app-dropdown>
-</div>
-<div class="novo-assunto-container mt-2" [formGroup]="formAssunto">
-  <div class="form-group novo-assunto">
-    <label class="form-label">Novo assunto</label>
-    <input type="text" class="novo-assunto-input" formControlName="assunto">
+<form [formGroup]="formAssunto">
+  <div class="form-group area-conhecimento">
+    <label class="form-label">Área de conhecimento</label>
+    <app-dropdown [opcoes]="areasConhecimentoChaveDescricao" (opcaoSelecionadaEmit)="consultarAreaSelecionada($event)"></app-dropdown>
   </div>
-  <div class="form-group relevancia-container">
-    <label class="form-label">Relevância</label>
-    <div class="btn-container">
-      <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Baixa ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Baixa)">Baixa</button>
-      <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Normal ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Normal)">Normal</button>
-      <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Alta ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Alta)">Alta</button>
+  <div class="novo-assunto-container mt-2" >
+    <div class="form-group novo-assunto">
+      <label class="form-label">Novo assunto</label>
+      <input type="text" class="novo-assunto-input" formControlName="assunto">
+      <small class="txt-red-dark" *ngIf="formAssunto.get('assunto').errors && formAssunto.get('assunto').touched">Campo obrigatório</small>
+    </div>
+    <div class="form-group relevancia-container">
+      <label class="form-label">Relevância</label>
+      <div class="btn-container">
+        <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Baixa ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Baixa)">Baixa</button>
+        <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Normal ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Normal)">Normal</button>
+        <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Alta ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Alta)">Alta</button>
+      </div>
+    </div>
+    <div class="button-submit">
+      <button type="button" class="btn-primary icon" (click)="criarNovoAssunto()" [disabled]="bloquearCriacaoNovoAssunto()">+</button>
     </div>
   </div>
-  <div class="button-submit">
-    <button type="button" (click)="novoAssunto()">+</button>
-  </div>
-</div>
+</form>
+
 <div class="tabela mt-2">
   <table>
     <thead>
@@ -33,8 +37,8 @@
         <td style="min-width: 40rem;">{{ assunto.nome }}</td>
         <td style="min-width: 15rem;">{{ assunto.relevancia }}</td>
         <td class="icones-tabela">
-          <span class="material-symbols-outlined">edit</span>
-          <span class="material-symbols-outlined">delete</span>
+          <span class="material-symbols-outlined" (click)="showModalEditar(modalEditar, assunto.id)">edit</span>
+          <span class="material-symbols-outlined" (click)="showModalExcluir(modalExcluir, assunto)">delete</span>
         </td>
       </tr>
       <tr *ngIf="!listaAssuntos || listaAssuntos.length === 0">
@@ -43,3 +47,44 @@
     </tbody>
   </table>
 </div>
+
+<ng-template #modalEditar let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Assunto</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formAssunto">
+      <div class="form-group novo-assunto">
+        <label class="form-label">Assunto</label>
+        <input type="text" class="novo-assunto-input" formControlName="assunto">
+        <small class="txt-red-dark" *ngIf="formAssunto.get('assunto').errors && formAssunto.get('assunto').touched">Campo obrigatório</small>
+      </div>
+      <div class="form-group relevancia-container">
+        <label class="form-label">Relevância</label>
+        <div class="btn-container">
+          <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Baixa ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Baixa)">Baixa</button>
+          <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Normal ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Normal)">Normal</button>
+          <button type="button" class="btn-relevancia"  [ngClass]="relevanciaSelecionada === relevanciaEnum.Alta ? 'relevancia-selecionada' : ''" (click)="botaoSelecionado(relevanciaEnum.Alta)">Alta</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-confirmar" (click)="editarAssunto()">Confirmar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancelar</button>
+  </div>
+</ng-template>
+
+<ng-template #modalExcluir let-modal>
+  <div class="modal-header">
+    <h4 class="modal-titulo" id="modal-basic-title">Excluir Assunto</h4>
+    <h6 class="modal-subtitulo">Tem certeza que deseja excluir este assunto?</h6>
+  </div>
+  <div class="modal-body">
+    {{ descricaoAssunto }}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-confirmar" (click)="excluirAssunto()">Excluir</button>
+    <button type="button" class="btn btn-cancelar" (click)="modal.close()">Cancelar</button>
+  </div>
+</ng-template>

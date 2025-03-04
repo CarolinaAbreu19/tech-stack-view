@@ -10,7 +10,8 @@
   </p-tabPanel>
   <p-tabPanel header="Conhecimentos Comuns" [cache]='false' [selected]="abaSelecionada === '2'">
     <ng-template pTemplate="content">
-      <app-novo-conhecimento 
+      <app-novo-conhecimento
+        (obterDetalhesTechStackEmitter)="obterDetalhesTechStack()" 
         [idTechStack]="informacoesTechStack.id"
         [areasConhecimento]="informacoesTechStack.areasConhecimento" 
         [tipoConhecimento]="tipoConhecimentoEnum.Comum"></app-novo-conhecimento>
@@ -18,12 +19,16 @@
   </p-tabPanel>
   <p-tabPanel header="Assuntos" [cache]='false' [selected]="abaSelecionada === '3'">
     <ng-template pTemplate="content">
-      <app-tab-assuntos [areasConhecimento]="informacoesTechStack.areasConhecimento"></app-tab-assuntos>
+      <app-tab-assuntos
+      (obterDetalhesTechStackEmitter)="obterDetalhesTechStack()"
+      [areasConhecimento]="informacoesTechStack.areasConhecimento"></app-tab-assuntos>
     </ng-template>
   </p-tabPanel>
   <p-tabPanel header="Respostas" [cache]='false' [selected]="abaSelecionada === '4'">
     <ng-template pTemplate="content">
-      <app-tab-respostas [idTechStack]="informacoesTechStack.id"></app-tab-respostas>
+      <app-tab-respostas
+      (obterDetalhesTechStackEmitter)="obterDetalhesTechStack()" 
+      [idTechStack]="informacoesTechStack.id"></app-tab-respostas>
     </ng-template>
   </p-tabPanel>
 </p-tabView>
